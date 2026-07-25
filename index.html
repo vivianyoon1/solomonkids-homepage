@@ -257,11 +257,16 @@
       height: 420px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
     }
     .about-visual img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
     .about-text .badge { margin-bottom: 16px; }
@@ -502,7 +507,7 @@
       .hero p   { font-size: 15px; }
 
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .about-visual { height: 220px; font-size: 64px; order: -1; }
+      .about-visual { height: 220px; padding: 18px; order: -1; }
       .about-text h2 { font-size: 28px; }
 
       .prog-grid  { grid-template-columns: 1fr; }
@@ -578,7 +583,7 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-visual">
-        <img src="images/exterior.jpg" alt="갤러리휴리움 솔로몬키즈 어린이집">
+        <img src="images/logo.png" alt="갤러리휴리움 솔로몬키즈 어린이집 로고">
       </div>
       <div class="about-text">
         <div class="badge">우리 어린이집 소개</div>
