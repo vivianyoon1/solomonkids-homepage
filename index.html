@@ -216,6 +216,70 @@
       flex-wrap: wrap;
     }
 
+    /* 히어로 주요 액션 (입소 상담 / 입소대기 신청) */
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .act {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .act .arrow { transition: transform .2s; }
+    .act:hover { transform: translateY(-2px); }
+    .act:hover .arrow { transform: translateX(4px); }
+    .act:focus-visible { outline: 3px solid var(--mint-dark); outline-offset: 3px; }
+    .act-main {
+      background: var(--white);
+      color: var(--text-dark);
+      box-shadow: 0 4px 16px rgba(61,44,44,.13);
+    }
+    .act-sub {
+      background: var(--mint-dark);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(93,191,154,.38);
+    }
+
+    /* 히어로 연락 버튼 묶음 (전화 / 카톡 / 인스타그램) */
+    .hero-contact {
+      display: inline-flex;
+      gap: 8px;
+      padding: 8px;
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(10px);
+      border-radius: 100px;
+      box-shadow: 0 4px 18px rgba(61,44,44,.10);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border-radius: 100px;
+      padding: 11px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s;
+      white-space: nowrap;
+    }
+    .chip:hover { transform: translateY(-2px); }
+    .chip:focus-visible { outline: 3px solid var(--text-dark); outline-offset: 2px; }
+    .chip-phone { background: var(--peach);  color: var(--text-dark); }
+    .chip-kakao { background: #FEE500;       color: #3C1E1E; }
+    .chip-insta { background: linear-gradient(45deg, #F9CE34, #EE2A7B, #6228D7); color: #fff; }
+
     /* ───── BUTTONS ───── */
     .btn {
       border: none;
@@ -545,6 +609,11 @@
       .hero-btns { flex-direction: column; align-items: center; }
       .hero-btns .btn { width: 100%; justify-content: center; }
 
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .act { width: 100%; justify-content: center; padding: 14px 22px; font-size: 15px; }
+      .hero-contact { display: flex; width: 100%; gap: 6px; padding: 7px; }
+      .chip { flex: 1; justify-content: center; padding: 10px 8px; font-size: 13px; gap: 5px; }
+
       .info-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -566,7 +635,7 @@
       <li><a href="#map">오시는 길</a></li>
       <li><a href="#contact">문의</a></li>
     </ul>
-    <a href="tel:042-721-3256" class="nav-cta">📞 전화 문의</a>
+    <a href="https://open.kakao.com/o/soaJS6Bh" target="_blank" rel="noopener" class="nav-cta">💬 입소 상담</a>
     <button class="nav-hamburger" onclick="toggleMenu()" aria-label="메뉴">☰</button>
   </div>
 </nav>
@@ -577,6 +646,7 @@
   <a href="#gallery" onclick="closeMenu()">갤러리</a>
   <a href="#map"     onclick="closeMenu()">오시는 길</a>
   <a href="#contact" onclick="closeMenu()">문의</a>
+  <a href="https://open.kakao.com/o/soaJS6Bh" target="_blank" rel="noopener" onclick="closeMenu()">💬 입소 상담하기</a>
   <a href="tel:042-721-3256" onclick="closeMenu()">📞 전화 문의</a>
 </div>
 
@@ -585,13 +655,20 @@
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
   <div class="hero-content">
-    <div class="hero-badge">🌸 대전 동구 국공립 영아전담 어린이집</div>
+    <div class="hero-badge">🌸 대전시 동구 국공립 어린이집</div>
     <img class="hero-logo" src="images/logo.png" alt="갤러리휴리움 솔로몬키즈 어린이집" width="1098" height="722">
     <h1><em>함께라서 행복해요</em></h1>
     <p>건강한 어린이, 사랑받는 어린이, 행복한 어린이</p>
-    <div class="hero-btns">
-      <a href="tel:042-721-3256" class="btn btn-phone">📞 042-721-3256</a>
-      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" class="btn btn-insta">📸 인스타그램 보기</a>
+
+    <div class="hero-actions">
+      <a href="https://open.kakao.com/o/soaJS6Bh" target="_blank" rel="noopener" class="act act-main">입소 상담하기 <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="https://www.childcare.go.kr/?menuno=166#none" target="_blank" rel="noopener" class="act act-sub">입소대기 신청 <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="hero-contact">
+      <a href="tel:042-721-3256" class="chip chip-phone">📞 전화</a>
+      <a href="https://open.kakao.com/o/soaJS6Bh" target="_blank" rel="noopener" class="chip chip-kakao">💬 카톡 상담</a>
+      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="chip chip-insta">📸 인스타그램</a>
     </div>
   </div>
 </section>
@@ -749,10 +826,14 @@
     <div class="cta-box">
       <div class="badge">문의하기</div>
       <h2>입학 문의가 있으신가요?</h2>
-      <p>전화나 인스타그램으로 편하게 문의해 주세요!<br>빠르고 친절하게 답변드릴게요. 🌸</p>
+      <p>카카오톡 오픈채팅으로 편하게 문의해 주세요!<br>빠르고 친절하게 답변드릴게요. 🌸</p>
       <div class="cta-btns">
-        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" class="btn btn-insta">📸 인스타그램 DM</a>
+        <a href="https://open.kakao.com/o/soaJS6Bh" target="_blank" rel="noopener" class="btn btn-kakao">💬 카카오톡 오픈채팅</a>
         <a href="tel:042-721-3256" class="btn btn-phone">📞 전화 문의</a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="btn btn-insta">📸 인스타그램 DM</a>
+      </div>
+      <div class="cta-btns" style="margin-top:14px;">
+        <a href="https://www.childcare.go.kr/?menuno=166#none" target="_blank" rel="noopener" class="btn btn-mint">📝 입소대기 신청 바로가기</a>
       </div>
     </div>
   </div>
