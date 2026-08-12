@@ -82,6 +82,9 @@
     background: var(--cream);
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
+    /* 한글이 단어 중간에서 잘리지 않도록 어절 단위로 줄바꿈 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   img { max-width: 100%; display: block; }
@@ -107,10 +110,10 @@
   .lede { max-width: 660px; margin: 0 auto 60px; text-align: center; }
   .eyebrow {
     display: inline-block;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: .18em;
-    text-transform: uppercase;
+    /* 한글은 자간을 벌리면 글자가 흩어져 보여 최소로만 둡니다 */
+    letter-spacing: .02em;
     color: var(--sage-deep);
     margin-bottom: 18px;
   }
@@ -370,10 +373,10 @@
   .motto { background: var(--sage-deep); color: #fff; padding: 74px 0; }
   .motto__head {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: .2em;
-    color: rgba(255,255,255,.62);
+    letter-spacing: .04em;
+    color: rgba(255,255,255,.66);
     margin-bottom: 34px;
   }
   .motto__grid {
@@ -389,18 +392,19 @@
     width: 1px; height: 48%;
     background: rgba(255,255,255,.20);
   }
+  /* 설명을 먼저, 원훈을 아래에 두어 시선이 원훈에서 멈추도록 */
+  .motto__item small {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,.68);
+  }
   .motto__item b {
     display: block;
     font-family: var(--serif);
     font-size: clamp(21px, 3.2vw, 30px);
     font-weight: 700;
     line-height: 1.4;
-  }
-  .motto__item small {
-    display: block;
-    margin-top: 8px;
-    font-size: 13.5px;
-    color: rgba(255,255,255,.66);
   }
 
   /* ═════════ 철학 선언문 ═════════ */
@@ -581,11 +585,10 @@
   .prog:nth-child(4) .prog__badge { background: #FBF3DC;             color: #B08A22; }
 
   .prog__kicker {
-    font-size: 11.5px;
+    font-size: 13.5px;
     font-weight: 700;
-    letter-spacing: .16em;
+    letter-spacing: .02em;
     color: var(--ink-soft);
-    text-transform: uppercase;
     display: block;
     margin-bottom: 6px;
   }
@@ -682,11 +685,10 @@
   }
   .fact__ic svg { width: 19px; height: 19px; }
   .fact dt {
-    font-size: 11.5px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: .12em;
+    letter-spacing: .02em;
     color: var(--ink-soft);
-    text-transform: uppercase;
     margin-bottom: 4px;
   }
   .fact dd { font-size: 16px; font-weight: 500; line-height: 1.6; }
@@ -952,19 +954,19 @@
 <!-- ══════════════ 원훈 ══════════════ -->
 <section class="motto" aria-label="원훈">
   <div class="shell">
-    <p class="motto__head">원 훈</p>
+    <p class="motto__head">원훈</p>
     <div class="motto__grid">
       <div class="motto__item">
-        <b>건강한 어린이</b>
         <small>몸과 마음이 함께 튼튼하게</small>
+        <b>건강한 어린이</b>
       </div>
       <div class="motto__item">
-        <b>사랑받는 어린이</b>
         <small>받은 사랑을 나눌 줄 아는</small>
+        <b>사랑받는 어린이</b>
       </div>
       <div class="motto__item">
-        <b>행복한 어린이</b>
         <small>일상에서 즐거움을 발견하는</small>
+        <b>행복한 어린이</b>
       </div>
     </div>
   </div>
@@ -1100,7 +1102,7 @@
           </svg>
         </div>
         <div>
-          <span class="prog__kicker">경험 중심 놀이</span>
+          <span class="prog__kicker">경험중심놀이</span>
           <h3>오감융합놀이</h3>
           <p>다양한 식재료를 직접 만지고, 탐색하며 온몸으로 즐겁게 놀이하는 시간입니다. 정해진 답을 알려주기보다 아이 스스로 탐색하고, 반복하며, 생각을 확장하고, 놀이 속에서 배움을 만들어가는 경험 중심 놀이입니다.</p>
           <p class="prog__note">결과보다 그 안에서 아이가 무엇을 느끼고 배우는지, 그것이 우리가 가장 눈여겨보는 부분입니다.</p>
@@ -1161,7 +1163,7 @@
 <section class="band band--cream" id="gallery">
   <div class="shell">
     <div class="lede">
-      <span class="eyebrow">Gallery</span>
+      <span class="eyebrow">갤러리</span>
       <h2>솔키둥이의 행복한 모습</h2>
       <p>아이들이 놀이하고, 발견하고, 자라는 하루하루를 담았습니다.</p>
     </div>
