@@ -709,9 +709,26 @@
   }
 
   /* ═════════ 갤러리 ═════════ */
+  .gal-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .gal-sub {
+    text-align: center;
+    font-size: 14.5px;
+    color: var(--ink-mid);
+    margin-bottom: 26px;
+  }
+  .gal-title + .gal-sub { margin-top: -2px; }
+  .gal-group + .gal-group { margin-top: 56px; }
+
+  /* 사진 — 정사각 격자 (8장을 4열 2줄로 고르게) */
   .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
   .shot {
@@ -725,7 +742,28 @@
   .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
   .shot:hover { transform: translateY(-4px); box-shadow: var(--sh); }
   .shot:hover img { transform: scale(1.06); }
-  .gallery__more { text-align: center; margin-top: 34px; }
+
+  /* 안내문 — 글씨를 읽어야 하므로 자르지 않고 원본 비율 그대로 */
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+  .note {
+    display: block;
+    border-radius: var(--r);
+    overflow: hidden;
+    background: var(--white);
+    border: var(--line);
+    box-shadow: var(--sh-sm);
+    transition: transform .26s, box-shadow .26s;
+  }
+  .note img { width: 100%; height: auto; }
+  .note:hover { transform: translateY(-4px); box-shadow: var(--sh); }
+  /* 안내문 4장은 비율이 같아 2×2로 고르게 놓입니다 */
+
+  .gallery__more { text-align: center; margin-top: 40px; }
 
   /* ═════════ 원 정보 · 오시는 길 ═════════ */
   .visit {
@@ -917,6 +955,8 @@
 
     .goals { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: repeat(2, 1fr); }
+    .notes { grid-template-columns: 1fr; gap: 16px; }
+    .gal-group + .gal-group { margin-top: 44px; }
     .visit__aside img { width: 150px; }
 
     .day::before { left: 70px; }
@@ -1324,13 +1364,32 @@
       <p>아이들이 놀이하고, 발견하고, 자라는 하루하루를 담았습니다.</p>
     </div>
 
-    <div class="gallery">
-      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/gallery-1.jpg" alt="물놀이하는 아이들" loading="lazy"></a>
-      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/gallery-2.jpg" alt="신발 신고 벗기를 연습하는 아이들" loading="lazy"></a>
-      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/gallery-3.jpg" alt="소방 놀이를 하는 아이들" loading="lazy"></a>
-      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/gallery-4.jpg" alt="바깥 나들이에서 꽃밭을 바라보는 아이들" loading="lazy"></a>
-      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/gallery-5.jpg" alt="오감융합놀이를 하는 아이들" loading="lazy"></a>
-      <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/gallery-6.jpg" alt="나비 날개를 만들어 창가에 선 아이들" loading="lazy"></a>
+    <!-- 놀이하는 순간 — 실내 놀이 / 바깥 자연 순으로 묶었습니다 -->
+    <div class="gal-group">
+      <p class="gal-title">놀이하는 순간</p>
+      <p class="gal-sub">놀면서 배우는 유능한 어린 학습자</p>
+      <div class="gallery">
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-tofu.jpg" alt="노란 우비를 입고 두부를 손으로 만지며 오감융합놀이를 하는 아이" loading="lazy" width="900" height="900"></a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-sand.jpg" alt="모래놀이터에서 삽과 자동차 장난감으로 함께 노는 아이들" loading="lazy" width="675" height="900"></a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-butterfly.jpg" alt="직접 만든 나비 날개를 등에 달고 창가에 선 아이들" loading="lazy" width="752" height="900"></a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-fire.jpg" alt="빨간 소방관 옷을 입고 소방 놀이를 하는 아이들" loading="lazy" width="900" height="900"></a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-water.jpg" alt="물놀이터에서 물을 받아 옮기며 노는 아이들" loading="lazy" width="506" height="900"></a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-potato.jpg" alt="목장갑을 끼고 흙을 파서 감자를 캐는 아이" loading="lazy" width="900" height="900"></a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-flower.jpg" alt="바깥 나들이에서 돌담에 기대어 꽃밭을 바라보는 아이들" loading="lazy" width="900" height="675"></a>
+        <a href="https://www.instagram.com/solomon_kids_?igsh=M3NwcGJxeXY4d3Vv" target="_blank" rel="noopener" class="shot"><img src="images/p-forest.jpg" alt="솔키 숲체험 — 숲길에 나란히 앉아 활짝 웃는 아이들" loading="lazy" width="673" height="900"></a>
+      </div>
+    </div>
+
+    <!-- 활동 이야기 — 글씨가 있는 안내문이라 자르지 않고 원본 비율 그대로 -->
+    <div class="gal-group">
+      <p class="gal-title">활동 이야기</p>
+      <p class="gal-sub">놀이를 기록한 안내문이에요. 눌러서 크게 보실 수 있어요.</p>
+      <div class="notes">
+        <a href="images/n-spring.jpg" target="_blank" rel="noopener" class="note"><img src="images/n-spring.jpg" alt="도담반! 봄이랑 놀자 — 올챙이 기르기, 씨앗 심기, 벌과 나비 놀이 활동 안내문" loading="lazy" width="1500" height="1060"></a>
+        <a href="images/n-summer.jpg" target="_blank" rel="noopener" class="note"><img src="images/n-summer.jpg" alt="신나는 여름! — 물놀이, 수박 오감놀이, 목욕놀이로 여름을 탐색한 활동 안내문" loading="lazy" width="1500" height="1061"></a>
+        <a href="images/n-tape.jpg" target="_blank" rel="noopener" class="note"><img src="images/n-tape.jpg" alt="붙는친구 여기여기 모여라 — 테이프와 시트지로 하는 신체 놀이 활동 안내문" loading="lazy" width="1500" height="1060"></a>
+        <a href="images/n-sikgam.jpg" target="_blank" rel="noopener" class="note"><img src="images/n-sikgam.jpg" alt="식감 놀이터 — 원장님과 함께하는 오감융합놀이 팽이버섯 활동 안내문" loading="lazy" width="1123" height="794"></a>
+      </div>
     </div>
 
     <div class="gallery__more">
